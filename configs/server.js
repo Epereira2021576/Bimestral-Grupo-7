@@ -5,6 +5,7 @@ import cors from 'cors'
 import helmet from 'helmet'
 import morgan from 'morgan'
 import { dbConnection } from './mongo.js';
+import authRoutes from '../src/auth/auth.routes.js';
 
 
 class Server {
@@ -18,6 +19,7 @@ class Server {
 
         this.middlewares();
         this.conectarDB();
+        this.routes();
     }
 
     async conectarDB() {
@@ -31,7 +33,9 @@ class Server {
         this.app.use(helmet());
         this.app.use(morgan('dev'));
     }
-
+    routes() {
+        this.app.use(this.usuarioPath, authRoutes);
+    }
 
     listen() {
         this.app.listen(this.port, () => {
