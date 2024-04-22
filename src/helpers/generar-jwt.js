@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 
-export const generarJWT = (uid = '', email = '') => {
-    return new Promise((resolve, reject) => {
+export const generarJWT = ( uid = '', email = '' ) => {
+    return new Promise( ( resolve, reject ) => {
         const payload = { uid, email }
         jwt.sign(
             payload,
@@ -9,9 +9,9 @@ export const generarJWT = (uid = '', email = '') => {
             {
                 expiresIn: '2h'
             },
-            (err, token)=>{
-                err ? (console.log(err),reject('we have a proble to generate the token')) : resolve(token)
+            ( err, token ) => {
+                err ? ( console.log( err ), reject( 'We had a problem generating the token' ) ) : resolve( token )
             }
         )
-    })
+    } )
 }
