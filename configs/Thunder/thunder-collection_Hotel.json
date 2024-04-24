@@ -1,0 +1,116 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Hotel",
+    "collectionId": "5a5ebe0f-fdb1-40c0-8611-5c93f7bc7b4e",
+    "dateExported": "2024-04-24T03:45:16.934Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "8f65ead7-790b-4ea6-a191-2c3c17f484cd",
+            "name": "Rooms",
+            "containerId": "",
+            "created": "2024-04-24T02:18:04.488Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "deceb5f8-5c64-457b-bf3d-1ad704aab3d3",
+            "name": "Login",
+            "containerId": "",
+            "created": "2024-04-24T03:23:23.186Z",
+            "sortNum": 20000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "c76b307f-9061-4730-a3a8-37f4adfb80f7",
+            "colId": "5a5ebe0f-fdb1-40c0-8611-5c93f7bc7b4e",
+            "containerId": "8f65ead7-790b-4ea6-a191-2c3c17f484cd",
+            "name": "AddRoom",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/room/agregar",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-04-24T02:18:15.184Z",
+            "modified": "2024-04-24T03:31:34.269Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjI4N2JkZjljMmNkYzhlMDcwYTY1ZmMiLCJlbWFpbCI6Ikl2YW4iLCJpYXQiOjE3MTM5MjkyOTksImV4cCI6MTcxMzkzNjQ5OX0.FlMARLQ2VW9RnVREEtnMdP8Hvz1s6jYlFLUrtfLh78I"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"roomNumber\": \"101\",\n  \"typeRoom\":\"Habitacion Grande\",\n  \"cleanlinessStatus\": \"Limpia\",\n  \"priceForNight\": \"2000.00\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "08225747-759f-4fa8-a425-b76a24e4b398",
+            "colId": "5a5ebe0f-fdb1-40c0-8611-5c93f7bc7b4e",
+            "containerId": "deceb5f8-5c64-457b-bf3d-1ad704aab3d3",
+            "name": "Registrar",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/auth/register",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-04-24T03:23:29.421Z",
+            "modified": "2024-04-24T03:26:23.144Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\":\"Ivan\",\n  \"email\":\"jlopez@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "0377b864-1b7a-4cee-bc1b-e986611818f1",
+            "colId": "5a5ebe0f-fdb1-40c0-8611-5c93f7bc7b4e",
+            "containerId": "deceb5f8-5c64-457b-bf3d-1ad704aab3d3",
+            "name": "Login",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/auth/login",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-04-24T03:23:36.772Z",
+            "modified": "2024-04-24T03:27:51.645Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"jlopez@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "b53194f9-ef3e-4820-9bd2-4d9e4798b0dc",
+            "colId": "5a5ebe0f-fdb1-40c0-8611-5c93f7bc7b4e",
+            "containerId": "8f65ead7-790b-4ea6-a191-2c3c17f484cd",
+            "name": "PutRoom",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/room/66287d64f6b9841b5d1ce87b",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-04-24T03:37:44.075Z",
+            "modified": "2024-04-24T03:39:20.074Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjI4N2JkZjljMmNkYzhlMDcwYTY1ZmMiLCJlbWFpbCI6Ikl2YW4iLCJpYXQiOjE3MTM5MjkyOTksImV4cCI6MTcxMzkzNjQ5OX0.FlMARLQ2VW9RnVREEtnMdP8Hvz1s6jYlFLUrtfLh78I"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"roomNumber\": \"101\",\n  \"typeRoom\":\"Habitacion Pequeña\",\n  \"cleanlinessStatus\": \"Limpia\",\n  \"priceForNight\": \"1500.00\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "0105d4db-651d-452c-9673-c6386eab8cee",
+            "colId": "5a5ebe0f-fdb1-40c0-8611-5c93f7bc7b4e",
+            "containerId": "8f65ead7-790b-4ea6-a191-2c3c17f484cd",
+            "name": "ListRooms",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/room/list",
+            "method": "GET",
+            "sortNum": 50000,
+            "created": "2024-04-24T03:40:25.819Z",
+            "modified": "2024-04-24T03:41:47.521Z",
+            "headers": []
+        }
+    ],
+    "ref": "YGO_WJoCInMPeV_BGEJOrFq89wIePOm1TPPrXt7kyzD-B2x682U210zGZscFCMOr1LbOU1u8cNHqgOasxlsygA"
+}
