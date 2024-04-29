@@ -3,8 +3,8 @@ import Hotel from './hotel.model';
 //Post Hotel
 export const postHotel = async (req, res) => {
     try {
-        const { name, description, address, phone, starts, pricePerNight } = req.body;
-        const newHotel = new Hotel({ name, description, address, phone, starts, pricePerNight });
+        const { name, description, address, phone, category, pricePerNight, amenities } = req.body;
+        const newHotel = new Hotel({ name, description, address, phone, category, pricePerNight, amenities });
         await newHotel.save();
 
         return res.status(201).json({
