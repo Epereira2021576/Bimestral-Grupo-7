@@ -17,6 +17,10 @@ const RoomSchema = new Schema({
         type: Number,
         required: true
     },
+    hotel: {
+        type: Schema.Types.ObjectId,
+        ref: 'Hotel'
+    },
     estado: {
         type: Boolean,
         default: true,
