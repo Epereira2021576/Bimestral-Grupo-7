@@ -4,7 +4,9 @@ import Hotel from './hotel.model';
 export const postHotel = async (req, res) => {
     try {
         const { name, description, address, phone, category, pricePerNight, amenities } = req.body;
-        const newHotel = new Hotel({ name, description, address, phone, category, pricePerNight, amenities });
+        const newHotel = new Hotel({
+            name, description, address, phone, category, pricePerNight, amenities
+        });
         await newHotel.save();
 
         return res.status(201).json({
@@ -39,3 +41,41 @@ export const getHotel = async (req, res) => {
         });
     }
 }
+
+//Update Hotel by id
+export const updateHotel = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const { name, description, address, phone, category, pricePerNight, amenities } = req.body;
+        const hotel = await Hotel.findById(id);
+        // check if hotel exists
+        if (!hotel) {
+            return res.status(404).json({
+                msg: 'Hotel not found'
+            });
+        }
+        //check if status is true
+        if (!hotel.status) {
+            return res.status(404).json({
+                msg: 'Hotel is not available'
+            });
+        }
+        // update hotel
+        const updatedHotel = await Hotel.findByIdAndUpdate(id, {
+            name, description, address, phone, category, pricePerNight, amenities
+        }, { new: true });
+        res.status(200).json({
+            msg: 'Hotel updated successfully',
+            hotel: updatedHotel
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({
+            msg: 'Failed to update hotel.',
+            error: error.message
+        });
+    }
+}
+
+
