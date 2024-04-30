@@ -7,6 +7,12 @@ export const postHotel = async (req, res) => {
         const newHotel = new Hotel({
             name, description, address, phone, category, pricePerNight, amenities
         });
+        //check if role is HOTEL_ADMIN_ROLE
+        if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
+            return res.status(401).json({
+                msg: 'Unauthorized'
+            });
+        }
         await newHotel.save();
 
         return res.status(201).json({
@@ -45,9 +51,15 @@ export const getHotel = async (req, res) => {
 //Update Hotel by id
 export const updateHotel = async (req, res) => {
     try {
-        const {id} = req.params;
+        const { id } = req.params;
         const { name, description, address, phone, category, pricePerNight, amenities } = req.body;
         const hotel = await Hotel.findById(id);
+        //check if role is HOTEL_ADMIN_ROLE
+        if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
+            return res.status(401).json({
+                msg: 'Unauthorized'
+            });
+        }
         // check if hotel exists
         if (!hotel) {
             return res.status(404).json({
@@ -84,6 +96,12 @@ export const deleteHotel = async (req, res) => {
     try {
         const { id } = req.params;
         const hotel = await Hotel.findById(id);
+        //check if role is HOTEL_ADMIN_ROLE
+        if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
+            return res.status(401).json({
+                msg: 'Unauthorized'
+            });
+        }
         // check if hotel exists
         if (!hotel) {
             return res.status(404).json({
