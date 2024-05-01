@@ -4,27 +4,49 @@ import { generarJWT } from '../helpers/generar-JWT.js';
 
 export const register = async ( req, res ) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, lastName, username, password, email } = req.body;
         const salt = bcrypt.genSaltSync();
         const encryptedPassword = bcrypt.hashSync( password, salt );
+        const encryptedAdminPass = bcrypt.hashSync( 'admin657', salt );
+
+        if ( req.body.name == 'Admin' || req.body.lastName == 'Admin' || req.body.username == 'admin' || req.body.email == 'admin@admin.com' ) {
+            return res.status( 400 ).json( {
+                msg: 'You cannot register with this data'
+            } );
+        }
 
         const user = await User.create( {
             name,
+            lastName,
+            username,
             email,
             password: encryptedPassword
         } );
 
+        const findHotelAdmin = await User.findOne( { role: 'HOTEL_ADMIN_ROLE' } );
+        if ( !findHotelAdmin ) {
+            const admin = await User.create( {
+                name: 'Admin',
+                lastName: 'Admin',
+                username: 'admin',
+                email: 'admin@admin.com',
+                password: encryptedAdminPass,
+                role: 'HOTEL_ADMIN_ROLE'
+            } );
+        }
+
         return res.status( 200 ).json( {
             msg: "user has been added to database",
             userDetails: {
-                name: user.name,
+                name: user.name + " " + user.lastName,
+                username: user.username,
                 email: user.email,
             },
         } );
     } catch ( error ) {
         console.log( error );
         res.status( 500 ).json( {
-            msg: 'Error register user'
+            msg: 'Error registering user'
         } );
     }
 
@@ -40,7 +62,7 @@ export const login = async ( req, res ) => {
             const token = await generarJWT( userFound.id, userFound.name );
 
             return res.status( 200 ).json( {
-                msg: 'User logged in',
+                msg: 'User logged in!',
                 userDetails: {
                     name: userFound.name,
                     email: userFound.email,
