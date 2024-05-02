@@ -7,6 +7,7 @@ import morgan from 'morgan'
 import { dbConnection } from './mongo.js';
 import authRoutes from '../src/auth/auth.routes.js';
 import roomRoutes from '../src/room/room.routes.js'
+import hotelRoutes from '../src/hotel/hotel.routes.js'
 
 
 class Server {
@@ -15,6 +16,7 @@ class Server {
         this.port = process.env.PORT;
         this.authPath = '/HotelManagement/v1/auth';
         this.roomPath = '/HotelManagement/v1/room';
+        this.hotelPath = '/HotelManagement/v1/hotel';
 
 
         this.middlewares();
@@ -36,6 +38,7 @@ class Server {
     routes() {
         this.app.use(this.authPath, authRoutes);
         this.app.use(this.roomPath, roomRoutes);
+        this.app.use(this.hotelPath, hotelRoutes);
     }
 
     listen() {
