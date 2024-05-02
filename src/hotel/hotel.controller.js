@@ -3,9 +3,9 @@ import Hotel from './hotel.model';
 //Post Hotel
 export const postHotel = async (req, res) => {
     try {
-        const { name, description, address, phone, category, pricePerNight, amenities } = req.body;
+        const { name, description, address, phone, category, pricePerNight, amenities, owner } = req.body;
         const newHotel = new Hotel({
-            name, description, address, phone, category, pricePerNight, amenities
+            name, description, address, phone, category, pricePerNight, amenities, owner
         });
         //check if role is HOTEL_ADMIN_ROLE
         if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
@@ -52,7 +52,7 @@ export const getHotel = async (req, res) => {
 export const updateHotel = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name, description, address, phone, category, pricePerNight, amenities } = req.body;
+        const { name, description, address, phone, category, pricePerNight, amenities, owner } = req.body;
         const hotel = await Hotel.findById(id);
         //check if role is HOTEL_ADMIN_ROLE
         if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
@@ -74,7 +74,7 @@ export const updateHotel = async (req, res) => {
         }
         // update hotel
         const updatedHotel = await Hotel.findByIdAndUpdate(id, {
-            name, description, address, phone, category, pricePerNight, amenities
+            name, description, address, phone, category, pricePerNight, amenities, owner
         }, { new: true });
         res.status(200).json({
             msg: 'Hotel updated successfully',
