@@ -24,6 +24,7 @@ router.get('/', [
 ], getHotel);
 
 router.put('/:id', [
+    validarJWT,
     check('name', 'Name is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
     check('address', 'Address is required').not().isEmpty(),
