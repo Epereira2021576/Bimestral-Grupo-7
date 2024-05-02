@@ -1,6 +1,6 @@
 import User from '../user/user.model.js';
 import bcrypt from 'bcryptjs';
-import { generarJWT } from '../helpers/generar-JWT.js';
+import { generarJWT } from '../helpers/generar-jwt.js';
 
 export const register = async ( req, res ) => {
     try {
@@ -23,7 +23,7 @@ export const register = async ( req, res ) => {
             password: encryptedPassword
         } );
 
-        const findHotelAdmin = await User.findOne( { role: 'HOTEL_ADMIN_ROLE' } );
+        const findHotelAdmin = await User.findOne( { role: 'PLATAFORM_ADMIN_ROLE' } );
         if ( !findHotelAdmin ) {
             const admin = await User.create( {
                 name: 'Admin',
@@ -31,7 +31,7 @@ export const register = async ( req, res ) => {
                 username: 'admin',
                 email: 'admin@admin.com',
                 password: encryptedAdminPass,
-                role: 'HOTEL_ADMIN_ROLE'
+                role: 'PLATAFORM_ADMIN_ROLE'
             } );
         }
 
@@ -59,13 +59,14 @@ export const login = async ( req, res ) => {
         const validPass = bcrypt.compareSync( password, userFound.password );
 
         if ( userFound && validPass ) {
-            const token = await generarJWT( userFound.id, userFound.name );
+            const token = await generarJWT( userFound.id, userFound.name, userFound.role );
 
             return res.status( 200 ).json( {
                 msg: 'User logged in!',
                 userDetails: {
                     name: userFound.name,
                     email: userFound.email,
+                    role: userFound.role
                 },
                 token
             } );
