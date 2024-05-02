@@ -38,3 +38,5 @@ router.put('/:id', [
 router.delete('/:id', [
     validarJWT
 ],deleteHotel);
+
+export default router;
