@@ -1,0 +1,72 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "room",
+    "collectionId": "cda9dbaf-f21d-4176-80ff-55263d1f0570",
+    "dateExported": "2024-05-03T09:57:38.870Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "6c475eef-340d-472b-9bec-ca90c8d75bce",
+            "colId": "cda9dbaf-f21d-4176-80ff-55263d1f0570",
+            "containerId": "",
+            "name": "postRoom",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/room/agregar",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-03T09:11:35.985Z",
+            "modified": "2024-05-03T09:18:55.244Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDUiLCJlbWFpbCI6ImFhIiwicm9sZSI6IlVTRVJfUk9MRSIsImlhdCI6MTcxNDcyNzE2MCwiZXhwIjoxNzE0NzM0MzYwfQ.g1XYpcmd-jeIm-CRK7UXo04-C3WqpSHwnYNk_l6qRcI"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"roomNumber\": \"15\",\n  \"typeRoom\": \"akaa\",\n  \"cleanlinessStatus\": \"jaja\",\n  \"priceForNight\": \"100.00\",\n  \"hotel\": \"6634abefa6da7551edbb5fa5\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "7cef8b1a-bed7-499a-b725-dc0f0fe21c6f",
+            "colId": "cda9dbaf-f21d-4176-80ff-55263d1f0570",
+            "containerId": "",
+            "name": "getRoom",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/room/list",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-05-03T09:53:14.614Z",
+            "modified": "2024-05-03T09:53:49.344Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDgiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzI5ODMxLCJleHAiOjE3MTQ3MzcwMzF9.4hVOdvO70x87pdpjLhyY1YKBKASQDCRVLImwLCvbfFQ"
+                }
+            ]
+        },
+        {
+            "_id": "e4dc3458-d580-48ca-9998-208ebd0b62c4",
+            "colId": "cda9dbaf-f21d-4176-80ff-55263d1f0570",
+            "containerId": "",
+            "name": "putRoom",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/room/6634abffa6da7551edbb5fa7",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-05-03T09:54:11.910Z",
+            "modified": "2024-05-03T09:54:59.260Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDgiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzI5ODMxLCJleHAiOjE3MTQ3MzcwMzF9.4hVOdvO70x87pdpjLhyY1YKBKASQDCRVLImwLCvbfFQ"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"roomNumber\": \"17\",\n  \"typeRoom\": \"akaa\",\n  \"cleanlinessStatus\": \"jaja\",\n  \"priceForNight\": \"100.00\",\n  \"hotel\": \"6634abefa6da7551edbb5fa5\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "tg0ynVUccJs4JZScEo1vo9UqXh08f6rhTNj2hmSmKwCc7nHF_Sb-K0ePE-86TJMskmghbVNRklkpS3rwMycvpg"
+}

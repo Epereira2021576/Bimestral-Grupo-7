@@ -1,0 +1,67 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Booking",
+    "collectionId": "fa007c9f-e35e-41da-a015-53de99ad5bc8",
+    "dateExported": "2024-05-03T09:57:27.424Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "642afc26-d917-4315-a381-9c969725ded0",
+            "colId": "fa007c9f-e35e-41da-a015-53de99ad5bc8",
+            "containerId": "",
+            "name": "postBooking",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/booking",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-03T09:06:25.000Z",
+            "modified": "2024-05-03T09:30:38.833Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDUiLCJlbWFpbCI6ImFhIiwicm9sZSI6IlVTRVJfUk9MRSIsImlhdCI6MTcxNDcyODYyOCwiZXhwIjoxNzE0NzM1ODI4fQ.DVXr1-_AEPqV3p_4ZCLplJTGJjNDkG3mjoUR0L-h2VM"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\r\n  \"room\": \"6634abffa6da7551edbb5fa7\",\r\n  \"checkInDate\": \"2023-04-15\",\r\n  \"checkOutDate\": \"2023-04-17\",\r\n  \"totalPrice\": 300\r\n}\r\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "98b84d9f-e95d-40e9-b5b8-174b5ec64e8c",
+            "colId": "fa007c9f-e35e-41da-a015-53de99ad5bc8",
+            "containerId": "",
+            "name": "getBooking",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/booking",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-05-03T09:42:17.911Z",
+            "modified": "2024-05-03T09:42:34.454Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDUiLCJlbWFpbCI6ImFhIiwicm9sZSI6IlVTRVJfUk9MRSIsImlhdCI6MTcxNDcyODYyOCwiZXhwIjoxNzE0NzM1ODI4fQ.DVXr1-_AEPqV3p_4ZCLplJTGJjNDkG3mjoUR0L-h2VM"
+                }
+            ]
+        },
+        {
+            "_id": "019a8bb3-2863-4c0c-a47b-4bceb6af6449",
+            "colId": "fa007c9f-e35e-41da-a015-53de99ad5bc8",
+            "containerId": "",
+            "name": "getByUser",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/booking/663336089ffcc26058660445",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-05-03T09:42:45.987Z",
+            "modified": "2024-05-03T09:45:56.436Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDUiLCJlbWFpbCI6ImFhIiwicm9sZSI6IlVTRVJfUk9MRSIsImlhdCI6MTcxNDcyODYyOCwiZXhwIjoxNzE0NzM1ODI4fQ.DVXr1-_AEPqV3p_4ZCLplJTGJjNDkG3mjoUR0L-h2VM"
+                }
+            ]
+        }
+    ],
+    "ref": "kueRoW8yvCFX5otMvduKXvdkqqoPqGlKvfEQt062ofw4t-6ZPfucHoxXV4lZg17XKJk_pXV5jR8usxTM4z2fng"
+}

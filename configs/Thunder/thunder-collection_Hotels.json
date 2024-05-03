@@ -1,0 +1,89 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Hotels",
+    "collectionId": "76c7b8eb-7954-4b95-ac64-86fcc59888ff",
+    "dateExported": "2024-05-03T09:57:18.899Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "5957578a-8312-43ad-afa1-73e6953f479b",
+            "colId": "76c7b8eb-7954-4b95-ac64-86fcc59888ff",
+            "containerId": "",
+            "name": "addHotel",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/hotel",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-02T06:27:16.308Z",
+            "modified": "2024-05-03T09:50:42.081Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDgiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzI5ODMxLCJleHAiOjE3MTQ3MzcwMzF9.4hVOdvO70x87pdpjLhyY1YKBKASQDCRVLImwLCvbfFQ"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Hotel ola\",\n  \"description\": \"nose\",\n  \"address\": \"no se donde queda\",\n  \"phone\": \"38657089\",\n  \"category\": \"1estrella\",\n  \"pricePerNight\": 100.00,\n  \"amenities\": \"piscina\",\n  \"owner\": \"6633336bf223a56d7d7ff777\"\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "c96aecec-6270-4cae-9b9c-0b5b40bb376d",
+            "colId": "76c7b8eb-7954-4b95-ac64-86fcc59888ff",
+            "containerId": "",
+            "name": "getHotel",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/hotel",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-05-02T07:10:15.278Z",
+            "modified": "2024-05-03T09:50:56.507Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDgiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzI5ODMxLCJleHAiOjE3MTQ3MzcwMzF9.4hVOdvO70x87pdpjLhyY1YKBKASQDCRVLImwLCvbfFQ"
+                }
+            ]
+        },
+        {
+            "_id": "1bdddd99-4803-4748-ae4c-edbcee2aacce",
+            "colId": "76c7b8eb-7954-4b95-ac64-86fcc59888ff",
+            "containerId": "",
+            "name": "updateHotel",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/hotel/6634abefa6da7551edbb5fa5",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-05-02T07:10:48.072Z",
+            "modified": "2024-05-03T09:51:14.225Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDgiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzI5ODMxLCJleHAiOjE3MTQ3MzcwMzF9.4hVOdvO70x87pdpjLhyY1YKBKASQDCRVLImwLCvbfFQ"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Hotel hola\",\n  \"description\": \"nose\",\n  \"address\": \"no se donde queda\",\n  \"phone\": \"38657089\",\n  \"category\": \"1estrella\",\n  \"pricePerNight\": 100.00,\n  \"amenities\": \"piscina\",\n  \"owner\": \"6633336bf223a56d7d7ff777\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "aa9d3058-6ac3-4a51-a6a7-d3654bff9f7c",
+            "colId": "76c7b8eb-7954-4b95-ac64-86fcc59888ff",
+            "containerId": "",
+            "name": "deleteHotel",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/hotel/6634abefa6da7551edbb5fa5",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-05-02T07:15:01.869Z",
+            "modified": "2024-05-03T09:51:32.053Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzMzYwODlmZmNjMjYwNTg2NjA0NDgiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzI5ODMxLCJleHAiOjE3MTQ3MzcwMzF9.4hVOdvO70x87pdpjLhyY1YKBKASQDCRVLImwLCvbfFQ"
+                }
+            ]
+        }
+    ],
+    "ref": "oJVDMcisdR_6_rF_Bxf80uTOS6wBoWbuvKqavIGO6zwXlIFpQ2Zavp2hCri2Bi0b2vUmH4q1rrKWO6eKfm8NAA"
+}

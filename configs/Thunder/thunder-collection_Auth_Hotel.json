@@ -1,0 +1,45 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Auth_Hotel",
+    "collectionId": "e17155f7-f100-4958-a01f-afc6f594d7df",
+    "dateExported": "2024-05-03T09:56:44.003Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "2754cab3-af5b-4996-ad33-9993a6fe59ee",
+            "colId": "e17155f7-f100-4958-a01f-afc6f594d7df",
+            "containerId": "",
+            "name": "register",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/auth/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-02T06:11:26.489Z",
+            "modified": "2024-05-02T06:22:23.207Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"aa\",\n  \"lastName\": \"bb\",\n  \"email\": \"a@gmail.com\",\n \"username\": \"aaaa\",\n \"password\": \"123456\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "631515cc-793b-4786-9797-04d4d2a2a975",
+            "colId": "e17155f7-f100-4958-a01f-afc6f594d7df",
+            "containerId": "",
+            "name": "login",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-05-02T06:11:33.652Z",
+            "modified": "2024-05-03T09:50:32.009Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"admin@admin.com\",\n  \"password\":\"admin657\"\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "fZgwncvSWMj_rIoeK9agiBR_qSI_ZTzY893bjegVMePRTZheFDh5ZyO1du-J3li8CqCOh3Em4Gq6tfv11Rfr7g"
+}
