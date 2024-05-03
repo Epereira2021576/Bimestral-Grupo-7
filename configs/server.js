@@ -9,6 +9,7 @@ import authRoutes from '../src/auth/auth.routes.js';
 import roomRoutes from '../src/room/room.routes.js'
 import hotelRoutes from '../src/hotel/hotel.routes.js'
 import eventRoutes from '../src/events/event.routes.js'
+import bookingRoutes from '../src/booking/booking.routes.js'
 
 
 class Server {
@@ -18,7 +19,8 @@ class Server {
         this.authPath = '/HotelManagement/v1/auth';
         this.roomPath = '/HotelManagement/v1/room';
         this.hotelPath = '/HotelManagement/v1/hotel';
-        this.eventPath = '/HotelManagement/v1/event'
+        this.eventPath = '/HotelManagement/v1/event';
+        this.bookingPath = '/HotelManagement/v1/booking';
 
 
         this.middlewares();
@@ -42,6 +44,7 @@ class Server {
         this.app.use( this.roomPath, roomRoutes );
         this.app.use( this.hotelPath, hotelRoutes );
         this.app.use( this.eventPath, eventRoutes );
+        this.app.use( this.bookingPath, bookingRoutes );
     }
 
     listen () {

@@ -23,8 +23,7 @@ const RoomSchema = new Schema({
     },
     estado: {
         type: Boolean,
-        default: true,
-        required: true
+        default: true
     },
 });
 

@@ -2,11 +2,11 @@ import Booking from './booking.model.js';
 import Room from '../room/room.model.js';
 
 // Create a new Booking
-export const create = async (req, res) => {
+export const createBooking = async (req, res) => {
     try {
         const { room, checkInDate, checkOutDate, totalPrice } = req.body;
-        const idUser = req.user.id;
-
+        const idUser = req.user.uid;
+        console.log(req.user.uid);
         //check role is USER_ROLE
         if (req.user.role !== 'USER_ROLE') {
             return res.status(401).json({
@@ -21,9 +21,9 @@ export const create = async (req, res) => {
                 msg: 'Room not available'
             });
         }
-
+        
         const booking = new Booking({
-            user: idUser,
+            user: req.user.uid,
             room,
             checkInDate,
             checkOutDate,
@@ -43,7 +43,7 @@ export const create = async (req, res) => {
 }
 
 // Get all Bookings
-export const findAllBookings = async (req, res) => {
+export const getAllBookings = async (req, res) => {
     try {
         const bookings = await Booking.find({ estado: true });
         res.json(bookings);
@@ -55,9 +55,9 @@ export const findAllBookings = async (req, res) => {
 }
 
 // Get all Bookings by User
-export const findAllBookingsByUser = async (req, res) => {
+export const getAllBookingsByUser = async (req, res) => {
     try {
-        const idUser = req.user.id;
+        const idUser = req.user.uid;
         const bookings = await Booking.find({ user: idUser, estado: true });
         res.json(bookings);
     } catch (error) {
