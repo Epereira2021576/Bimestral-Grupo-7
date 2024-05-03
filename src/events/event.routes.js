@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { postEvent, getEvents, putEvents, deleteEvents } from "./event.controller";
+import { postEvent, getEvents, putEvents, deleteEvents } from "./event.controller.js";
 
 const router = Router();
 
@@ -34,3 +34,5 @@ router.delete(
     '/event/delete/:id',
     deleteEvents
 );
+
+export default router;

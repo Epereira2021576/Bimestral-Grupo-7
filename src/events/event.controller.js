@@ -1,5 +1,5 @@
-import Event from './event.model';
-import User from '../user/user.model'
+import Event from './event.model.js';
+import User from '../user/user.model.js'
 
 export const postEvent = async ( req, res ) => {
     try {
@@ -16,10 +16,12 @@ export const postEvent = async ( req, res ) => {
                 msg: 'Cannot authorize event without a client'
             } );
         }
-        //check if role is HOTEL_ADMIN_ROLE
-        if ( req.user.role !== 'HOTEL_ADMIN_ROLE' ) {
+        //check if role is PLATAFORM_ADMIN_ROLE
+        if ( req.user.role !== 'PLATAFORM_ADMIN_ROLE' ) {
             return res.status( 401 ).json( {
-                msg: 'Unauthorized access'
+                msg: 'Unauthorized access',
+                role: req.user.role
+
             } );
         }
         await newEvent.save();
