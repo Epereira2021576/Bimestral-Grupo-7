@@ -5,7 +5,7 @@ export const postEvent = async ( req, res ) => {
     try {
         const { eventTitle, eventDescription, eventDate, location, eventServices } = req.body;
         const newEvent = new Event( {
-            eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices
+            eventTitle, eventDescription, eventDate, location, eventServices
         } );
         const clientID = req.headers['client']
 
@@ -57,10 +57,28 @@ export const getEvents = async ( req, res ) => {
 export const putEvents = async ( req, res ) => {
     try {
         const { id } = req.params;
-        const { eventTitle, eventDescription, eventDate, location, eventServices } = req.body;
+        const { eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices } = req.body;
+
+        const clientID = req.headers['client']
+
+        const checkClient = User.findById( clientID );
+
+        if ( !checkClient.role === 'CLIENT_ROLE' ) {
+            return res.status( 401 ).json( {
+                msg: 'Cannot authorize event without a client'
+            } );
+        }
+
+        if ( req.user.role !== 'PLATAFORM_ADMIN_ROLE' ) {
+            return res.status( 401 ).json( {
+                msg: 'Unauthorized access',
+                role: req.user.role
+
+            } );
+        }
 
         const updatedEvent = await Event.findByIdAndUpdate( id, {
-            eventTitle, eventDescription, eventDate, location, eventServices
+            eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices
         }, { new: true } );
 
         res.status( 200 ).json( {
@@ -79,6 +97,13 @@ export const putEvents = async ( req, res ) => {
 export const deleteEvents = async ( req, res ) => {
     try {
         const { id } = req.params;
+        if ( req.user.role !== 'PLATAFORM_ADMIN_ROLE' ) {
+            return res.status( 401 ).json( {
+                msg: 'Unauthorized access',
+                role: req.user.role
+
+            } );
+        }
         await Event.findByIdAndDelete( id );
         res.status( 200 ).json( {
             msg: 'Event deleted successfully'

@@ -1,12 +1,15 @@
 import { Router } from "express";
 import { check } from "express-validator";
 import { postEvent, getEvents, putEvents, deleteEvents } from "./event.controller.js";
+import { validarJWT } from "../middlewares/validar-jwt.js";
+
 
 const router = Router();
 
 router.post(
     '/event/add',
     [
+        validarJWT,
         check( 'eventTitle', 'Event title is required' ).not().isEmpty(),
         check( 'eventDescription', 'Event description is required' ).not().isEmpty(),
         check( 'eventDate', 'Event date is required' ).not().isEmpty(),
@@ -22,6 +25,7 @@ router.get(
 router.put(
     '/event/put/:id',
     [
+        validarJWT,
         check( 'eventTitle', 'Event title is required' ).not().isEmpty(),
         check( 'eventDescription', 'Event description is required' ).not().isEmpty(),
         check( 'eventDate', 'Event date is required' ).not().isEmpty(),
@@ -32,6 +36,7 @@ router.put(
 );
 router.delete(
     '/event/delete/:id',
+    validarJWT,
     deleteEvents
 );
 

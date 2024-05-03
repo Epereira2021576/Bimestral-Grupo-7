@@ -1,0 +1,96 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "Bimestral",
+    "collectionId": "d6400929-4c69-4f82-a463-05ca38d6ea8f",
+    "dateExported": "2024-05-03T14:14:02.045Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "fc738a4f-b864-4737-8a36-df810c033d31",
+            "colId": "d6400929-4c69-4f82-a463-05ca38d6ea8f",
+            "containerId": "",
+            "name": "postEvents",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/event/event/add",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-05-03T13:49:38.809Z",
+            "modified": "2024-05-03T14:06:54.368Z",
+            "headers": [
+                {
+                    "name": "client",
+                    "value": "6631c74ffb95675167b7c258"
+                },
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzYzc4MGJhMDI5ODE5Zjg2YmI3YjkiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzQ0ODQwLCJleHAiOjE3MTQ3NTIwNDB9.kakfl2EL0z8W4VjCAKvCrke3a9HL_xFXL-eWW3i4Mic"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"eventTitle\": \"hola\",\n  \"eventDescription\": \"hola\",\n  \"eventDate\": \"2024-02-12\",\n  \"location\": \"6633d450de30d4630270d58a\",\n  \"eventServices\": [\"Mariachi\", \"Comida\"]\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d774651a-53a7-4f8e-ada4-93b31d4ca4f8",
+            "colId": "d6400929-4c69-4f82-a463-05ca38d6ea8f",
+            "containerId": "",
+            "name": "getEvents",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/event/events",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-05-03T14:07:32.012Z",
+            "modified": "2024-05-03T14:07:54.485Z",
+            "headers": []
+        },
+        {
+            "_id": "d26a96a0-1746-4797-ab50-31c078d1ab14",
+            "colId": "d6400929-4c69-4f82-a463-05ca38d6ea8f",
+            "containerId": "",
+            "name": "putEvents",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/event/event/put/6634ef80543d2b8e6e064836",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-05-03T14:08:07.379Z",
+            "modified": "2024-05-03T14:12:11.009Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzYzc4MGJhMDI5ODE5Zjg2YmI3YjkiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzQ0ODQwLCJleHAiOjE3MTQ3NTIwNDB9.kakfl2EL0z8W4VjCAKvCrke3a9HL_xFXL-eWW3i4Mic"
+                },
+                {
+                    "name": "client",
+                    "value": "6631c74ffb95675167b7c258"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"eventTitle\": \"XD\",\n  \"eventDescription\": \"adios\",\n  \"eventDate\": \"2024-02-13\",\n  \"location\": \"6633d450de30d4630270d58a\",\n  \"additionalInfo\": [\"Number: 45451118\"],\n  \"eventServices\": [\"Mariachi\", \"Comida\", \"MAs cosas\"]\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "942fd2fd-bfce-4141-94cd-4ae55d855ee0",
+            "colId": "d6400929-4c69-4f82-a463-05ca38d6ea8f",
+            "containerId": "",
+            "name": "deleteEvent",
+            "url": "http://127.0.0.1:3001/HotelManagement/v1/event/event/delete/6634ef80543d2b8e6e064836",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-05-03T14:12:51.873Z",
+            "modified": "2024-05-03T14:13:53.373Z",
+            "headers": [
+                {
+                    "name": "Authorization",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjMzYzc4MGJhMDI5ODE5Zjg2YmI3YjkiLCJlbWFpbCI6IkFkbWluIiwicm9sZSI6IlBMQVRBRk9STV9BRE1JTl9ST0xFIiwiaWF0IjoxNzE0NzQ0ODQwLCJleHAiOjE3MTQ3NTIwNDB9.kakfl2EL0z8W4VjCAKvCrke3a9HL_xFXL-eWW3i4Mic"
+                },
+                {
+                    "name": "client",
+                    "value": "6631c74ffb95675167b7c258"
+                }
+            ]
+        }
+    ],
+    "ref": "GECC5hZuo1I6c8hHt8JtZFS_OCN6tEVnyI_rz4aeEaf2H3QvQyNYvG7XQHCUs9Kv_lWLJ58VhbrTX1AzX7r03Q"
+}
