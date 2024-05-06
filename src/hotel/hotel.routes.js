@@ -6,7 +6,7 @@ import { validarJWT } from '../middlewares/validar-jwt.js';
 
 const router = Router();
 
-router.post('/', [
+router.post('/agregar', [
     validarJWT,
     check('name', 'Name is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),

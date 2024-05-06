@@ -3,7 +3,6 @@ import Room from './room.model.js'
 
 export const roomsGet = async (req, res) => {
     try {
-        // Utilizar populate para obtener la información de la categoría
         const rooms = await Room.find({ estado: true });
 
         res.status(200).json(rooms);
@@ -18,18 +17,28 @@ export const roomsGet = async (req, res) => {
 
 export const roomsPost = async (req, res) => {
     try {
-        const { roomNumber, typeRoom, cleanlinessStatus, priceForNight } = req.body;
+        const { _id, estado, ...room } = req.body;
+
+        if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
+            return res.status(401).json({
+                msg: 'Unauthorized',
+                role: req.user.role
+            });
+        }
 
         const newRoom = new Room({
-            roomNumber,
-            typeRoom,
-            cleanlinessStatus,
-            priceForNight
+            _id,
+            estado,
+            ...room
         });
 
         const savedRoom = await newRoom.save();
 
-        res.status(201).json(savedRoom);
+        res.json({
+            message: 'Room created',
+            savedRoom
+        });
+
     } catch (error) {
         console.error(error);
         res.status(500).json({
@@ -46,6 +55,13 @@ export const roomsPut = async (req, res) => {
 
         let room = await Room.findById(roomId);
 
+        if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
+            return res.status(401).json({
+                msg: 'Unauthorized',
+                role: req.user.role
+            });
+        }
+
         if (!room) {
             return res.status(404).json({ msg: 'Habitación no encontrada.' });
         }
@@ -57,7 +73,10 @@ export const roomsPut = async (req, res) => {
 
         const updatedRoom = await room.save();
 
-        res.status(200).json(updatedRoom);
+        res.json({
+            message: 'Room update',
+            updatedRoom
+        });
     } catch (error) {
         console.error(error);
         res.status(500).json({

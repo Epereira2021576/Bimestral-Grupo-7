@@ -1,0 +1,213 @@
+{
+	"info": {
+		"_postman_id": "ed922e45-5a2b-451e-b79f-f1c5a0a4120a",
+		"name": "Hotel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32787268"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Ivan\",\r\n  \"lastName\": \"Lopez\",\r\n  \"email\": \"jlopez@gmail.com\",\r\n  \"username\": \"jlopez2022006\",\r\n  \"password\": \"123456\",\r\n  \"role\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/auth/register",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"HotelManagement",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"jlopez@gmail.com\",\r\n  \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"HotelManagement",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Hotel",
+			"item": [
+				{
+					"name": "Add Hotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM4ZGFlODFjYzRhNmJkNGZmYTAyYjgiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiUExBVEFGT1JNX0FETUlOX1JPTEUiLCJpYXQiOjE3MTUwMDM5MjYsImV4cCI6MTcxNTAxMTEyNn0.UnikRPCLsjeC1h-oZq8Z20Y0-AXDyABq12d4obqpC1E",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Decameron\",\r\n  \"description\": \"Hotel decameron resort\",\r\n  \"address\": \"El salvador\",\r\n  \"phone\": \"26565698\",\r\n  \"category\": \"De lujo\",\r\n  \"pricePerNight\":\"100\",\r\n  \"amenities\":\"piscina\",\r\n  \"owner\":\"6638dae81cc4a6bd4ffa02b8\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/hotel/agregar",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"HotelManagement",
+								"v1",
+								"hotel",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rooms",
+			"item": [
+				{
+					"name": "Add Room",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM4ZGFlODFjYzRhNmJkNGZmYTAyYjgiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTAwNDAyNywiZXhwIjoxNzE1MDExMjI3fQ.BWcSTBMY_krEQk4vY16qHQS00kVJhgh4PR2GsuN_Jmo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"roomNumber\":\"100\",\r\n  \"typeRoom\":\"Grande\",\r\n  \"cleanlinessStatus\":\"Limpia\",\r\n  \"priceForNight\":\"150\",\r\n  \"hotel\":\"6638dd6d4213ae672aec62bb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/room/agregar",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"HotelManagement",
+								"v1",
+								"room",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Room",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM4ZGFlODFjYzRhNmJkNGZmYTAyYjgiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTAwNDAyNywiZXhwIjoxNzE1MDExMjI3fQ.BWcSTBMY_krEQk4vY16qHQS00kVJhgh4PR2GsuN_Jmo",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"roomNumber\":\"200\",\r\n  \"typeRoom\":\"Pequeña\",\r\n  \"cleanlinessStatus\":\"Sin limpiar\",\r\n  \"priceForNight\":\"150\",\r\n  \"hotel\":\"6638dd6d4213ae672aec62bb\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/room/6638e283a496b6810b6cd6b2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"HotelManagement",
+								"v1",
+								"room",
+								"6638e283a496b6810b6cd6b2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
