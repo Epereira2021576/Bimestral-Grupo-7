@@ -51,7 +51,7 @@ export const roomsPost = async (req, res) => {
 export const roomsPut = async (req, res) => {
     try {
         const roomId = req.params.id;
-        const { roomNumber, typeRoom, cleanlinessStatus, priceForNight } = req.body;
+        const { _id, estado, ...rooms } = req.body;
 
         let room = await Room.findById(roomId);
 
@@ -66,10 +66,12 @@ export const roomsPut = async (req, res) => {
             return res.status(404).json({ msg: 'Habitación no encontrada.' });
         }
 
-        room.roomNumber = roomNumber;
-        room.typeRoom = typeRoom;
-        room.cleanlinessStatus = cleanlinessStatus;
-        room.priceForNight = priceForNight;
+        room.set({
+            _id: roomId,
+            estado: estado,
+            ...rooms
+        });
+        
 
         const updatedRoom = await room.save();
 
