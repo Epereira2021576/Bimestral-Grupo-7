@@ -25,10 +25,10 @@ const HotelSchema = new mongoose.Schema( {
         type: Number,
         required: true
     },
-    amenities: [{
+    amenities:{
         type: String,
         required: true
-    }],
+    },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
