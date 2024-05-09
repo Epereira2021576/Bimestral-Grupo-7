@@ -1,9 +1,9 @@
 import { response, request } from "express";
 import Room from './room.model.js'
 
-export const roomsGet = async (req, res) => {
+export const getRooms = async (req, res) => {
     try {
-        const rooms = await Room.find({ estado: true });
+        const rooms = await Room.find({ status: true });
 
         res.status(200).json(rooms);
     } catch (error) {
@@ -15,9 +15,9 @@ export const roomsGet = async (req, res) => {
     }
 };
 
-export const roomsPost = async (req, res) => {
+export const postRooms = async (req, res) => {
     try {
-        const { _id, estado, ...room } = req.body;
+        const { _id, status, ...room } = req.body;
 
         if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
             return res.status(401).json({
@@ -28,7 +28,7 @@ export const roomsPost = async (req, res) => {
 
         const newRoom = new Room({
             _id,
-            estado,
+            status,
             ...room
         });
 
@@ -48,10 +48,10 @@ export const roomsPost = async (req, res) => {
     }
 };
 
-export const roomsPut = async (req, res) => {
+export const putRooms = async (req, res) => {
     try {
         const roomId = req.params.id;
-        const { _id, estado, ...rooms } = req.body;
+        const { _id, status, ...rooms } = req.body;
 
         let room = await Room.findById(roomId);
 
@@ -68,7 +68,7 @@ export const roomsPut = async (req, res) => {
 
         room.set({
             _id: roomId,
-            estado: estado,
+            status: status,
             ...rooms
         });
         

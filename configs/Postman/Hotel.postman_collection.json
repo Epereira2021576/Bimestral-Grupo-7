@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ed922e45-5a2b-451e-b79f-f1c5a0a4120a",
+		"_postman_id": "685cade4-1e18-42cc-916a-68beefb55d53",
 		"name": "Hotel",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32787268"
@@ -95,7 +95,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"name\": \"Decameron\",\r\n  \"description\": \"Hotel decameron resort\",\r\n  \"address\": \"El salvador\",\r\n  \"phone\": \"26565698\",\r\n  \"category\": \"De lujo\",\r\n  \"pricePerNight\":\"100\",\r\n  \"amenities\":\"piscina\",\r\n  \"owner\":\"6638dae81cc4a6bd4ffa02b8\"\r\n}",
+							"raw": "{\r\n  \"name\": \"Decameron\",\r\n  \"description\": \"Hotel decameron resort\",\r\n  \"address\": \"El salvador\",\r\n  \"phone\": \"26565698\",\r\n  \"category\": \"De lujo\",\r\n  \"amenities\":\"piscina\",\r\n  \"owner\":\"6638dae81cc4a6bd4ffa02b8\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -103,7 +103,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:3001/HotelManagement/v1/hotel/agregar",
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/hotel/add",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -116,7 +116,7 @@
 								"HotelManagement",
 								"v1",
 								"hotel",
-								"agregar"
+								"add"
 							]
 						}
 					},
@@ -134,13 +134,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM4ZGFlODFjYzRhNmJkNGZmYTAyYjgiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTAwNDAyNywiZXhwIjoxNzE1MDExMjI3fQ.BWcSTBMY_krEQk4vY16qHQS00kVJhgh4PR2GsuN_Jmo",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjNkMGFiYzNiMWM0MDE4NWZkOTk0YTAiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTI3NjYzNywiZXhwIjoxNzE1MjgzODM3fQ.7TGgWFNKXyC5dxcV9HbaXWgOsSSTpfweFCt0KZacdpc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"roomNumber\":\"100\",\r\n  \"typeRoom\":\"Grande\",\r\n  \"cleanlinessStatus\":\"Limpia\",\r\n  \"priceForNight\":\"150\",\r\n  \"hotel\":\"6638dd6d4213ae672aec62bb\"\r\n}",
+							"raw": "{\r\n  \"roomNumber\":\"100\",\r\n  \"typeRoom\":\"Grande\",\r\n  \"cleanlinessStatus\":\"Limpia\",\r\n  \"pricePerNight\":\"150\",\r\n  \"hotel\":\"663d0b2a3b1c40185fd994a7\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -148,7 +148,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:3001/HotelManagement/v1/room/agregar",
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/room/add",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -161,7 +161,7 @@
 								"HotelManagement",
 								"v1",
 								"room",
-								"agregar"
+								"add"
 							]
 						}
 					},
@@ -174,13 +174,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM4ZGFlODFjYzRhNmJkNGZmYTAyYjgiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTAwNDAyNywiZXhwIjoxNzE1MDExMjI3fQ.BWcSTBMY_krEQk4vY16qHQS00kVJhgh4PR2GsuN_Jmo",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjNkMGFiYzNiMWM0MDE4NWZkOTk0YTAiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTI3NjYzNywiZXhwIjoxNzE1MjgzODM3fQ.7TGgWFNKXyC5dxcV9HbaXWgOsSSTpfweFCt0KZacdpc",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"roomNumber\":\"200\",\r\n  \"typeRoom\":\"Pequeña\",\r\n  \"cleanlinessStatus\":\"Sin limpiar\",\r\n  \"priceForNight\":\"150\",\r\n  \"hotel\":\"6638dd6d4213ae672aec62bb\"\r\n}",
+							"raw": "{\r\n  \"roomNumber\":\"200\",\r\n  \"typeRoom\":\"Pequeña\",\r\n  \"cleanlinessStatus\":\"Sin limpiar\",\r\n  \"pricePerNight\":\"150\",\r\n  \"hotel\":\"663d0b2a3b1c40185fd994a7\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -188,7 +188,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://127.0.0.1:3001/HotelManagement/v1/room/6638e283a496b6810b6cd6b2",
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/room/663d0b893b1c40185fd994ac",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -201,7 +201,7 @@
 								"HotelManagement",
 								"v1",
 								"room",
-								"6638e283a496b6810b6cd6b2"
+								"663d0b893b1c40185fd994ac"
 							]
 						}
 					},

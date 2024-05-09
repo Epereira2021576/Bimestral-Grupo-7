@@ -13,7 +13,7 @@ const RoomSchema = new Schema({
         type: String,
         required: true
     },
-    priceForNight: {
+    pricePerNight: {
         type: Number,
         required: true
     },
@@ -21,7 +21,7 @@ const RoomSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Hotel'
     },
-    estado: {
+    status: {
         type: Boolean,
         default: true
     },

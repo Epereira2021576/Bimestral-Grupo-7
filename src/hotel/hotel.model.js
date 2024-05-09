@@ -21,10 +21,6 @@ const HotelSchema = new mongoose.Schema( {
         type: String,
         required: true
     },
-    pricePerNight: {
-        type: Number,
-        required: true
-    },
     amenities:{
         type: String,
         required: true
