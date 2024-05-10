@@ -54,7 +54,7 @@ export const getHotel = async (req, res) => {
 }
 
 //Update Hotel by id
-export const updateHotel = async (req, res) => {
+export const putHotel = async (req, res) => {
     try {
         const idRoom = req.params.id;
         const { _id, status, ...resto } = req.body;
