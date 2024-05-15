@@ -16,14 +16,6 @@ export const postEvent = async ( req, res ) => {
                 msg: 'Cannot authorize event without a client'
             } );
         }
-        //check if role is PLATAFORM_ADMIN_ROLE
-        if ( req.user.role !== 'PLATAFORM_ADMIN_ROLE' ) {
-            return res.status( 401 ).json( {
-                msg: 'Unauthorized access',
-                role: req.user.role
-
-            } );
-        }
         await newEvent.save();
 
         return res.status( 201 ).json( {
@@ -69,14 +61,6 @@ export const putEvents = async ( req, res ) => {
             } );
         }
 
-        if ( req.user.role !== 'PLATAFORM_ADMIN_ROLE' ) {
-            return res.status( 401 ).json( {
-                msg: 'Unauthorized access',
-                role: req.user.role
-
-            } );
-        }
-
         const updatedEvent = await Event.findByIdAndUpdate( id, {
             eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices
         }, { new: true } );
@@ -97,13 +81,6 @@ export const putEvents = async ( req, res ) => {
 export const deleteEvents = async ( req, res ) => {
     try {
         const { id } = req.params;
-        if ( req.user.role !== 'PLATAFORM_ADMIN_ROLE' ) {
-            return res.status( 401 ).json( {
-                msg: 'Unauthorized access',
-                role: req.user.role
-
-            } );
-        }
         await Event.findByIdAndDelete( id );
         res.status( 200 ).json( {
             msg: 'Event deleted successfully'
