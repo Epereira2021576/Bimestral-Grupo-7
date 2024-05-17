@@ -1,5 +1,5 @@
 import Event from './event.model.js';
-import User from '../user/user.model.js'
+
 
 export const postEvent = async ( req, res ) => {
     try {
@@ -7,15 +7,7 @@ export const postEvent = async ( req, res ) => {
         const newEvent = new Event( {
             eventTitle, eventDescription, eventDate, location, eventServices
         } );
-        const clientID = req.headers['client']
 
-        const checkClient = User.findById( clientID );
-
-        if ( !checkClient.role === 'CLIENT_ROLE' ) {
-            return res.status( 401 ).json( {
-                msg: 'Cannot authorize event without a client'
-            } );
-        }
         await newEvent.save();
 
         return res.status( 201 ).json( {
@@ -51,15 +43,7 @@ export const putEvents = async ( req, res ) => {
         const { id } = req.params;
         const { eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices } = req.body;
 
-        const clientID = req.headers['client']
 
-        const checkClient = User.findById( clientID );
-
-        if ( !checkClient.role === 'CLIENT_ROLE' ) {
-            return res.status( 401 ).json( {
-                msg: 'Cannot authorize event without a client'
-            } );
-        }
 
         const updatedEvent = await Event.findByIdAndUpdate( id, {
             eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices

@@ -17,7 +17,7 @@ const EventSchema = new mongoose.Schema( {
     location: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Hotel',
-        required: true
+        /*required: true*/
     }],
     additionalInfo: [{
         type: String,
