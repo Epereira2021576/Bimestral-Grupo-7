@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "685cade4-1e18-42cc-916a-68beefb55d53",
+		"_postman_id": "1a518d64-5a06-487e-9ab0-a4884a9d04e2",
 		"name": "Hotel",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "32787268"
@@ -89,8 +89,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM4ZGFlODFjYzRhNmJkNGZmYTAyYjgiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiUExBVEFGT1JNX0FETUlOX1JPTEUiLCJpYXQiOjE3MTUwMDM5MjYsImV4cCI6MTcxNTAxMTEyNn0.UnikRPCLsjeC1h-oZq8Z20Y0-AXDyABq12d4obqpC1E",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjM4ZGFlODFjYzRhNmJkNGZmYTAyYjgiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiUExBVEFGT1JNX0FETUlOX1JPTEUiLCJpYXQiOjE3MTUwMDM5MjYsImV4cCI6MTcxNTAxMTEyNn0.UnikRPCLsjeC1h-oZq8Z20Y0-AXDyABq12d4obqpC1E"
 							}
 						],
 						"body": {
@@ -134,8 +133,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjNkMGFiYzNiMWM0MDE4NWZkOTk0YTAiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTI3NjYzNywiZXhwIjoxNzE1MjgzODM3fQ.7TGgWFNKXyC5dxcV9HbaXWgOsSSTpfweFCt0KZacdpc",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjNkMGFiYzNiMWM0MDE4NWZkOTk0YTAiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTI3NjYzNywiZXhwIjoxNzE1MjgzODM3fQ.7TGgWFNKXyC5dxcV9HbaXWgOsSSTpfweFCt0KZacdpc"
 							}
 						],
 						"body": {
@@ -174,8 +172,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjNkMGFiYzNiMWM0MDE4NWZkOTk0YTAiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTI3NjYzNywiZXhwIjoxNzE1MjgzODM3fQ.7TGgWFNKXyC5dxcV9HbaXWgOsSSTpfweFCt0KZacdpc",
-								"type": "text"
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NjNkMGFiYzNiMWM0MDE4NWZkOTk0YTAiLCJlbWFpbCI6Ikl2YW4iLCJyb2xlIjoiSE9URUxfQURNSU5fUk9MRSIsImlhdCI6MTcxNTI3NjYzNywiZXhwIjoxNzE1MjgzODM3fQ.7TGgWFNKXyC5dxcV9HbaXWgOsSSTpfweFCt0KZacdpc"
 							}
 						],
 						"body": {
@@ -202,6 +199,45 @@
 								"v1",
 								"room",
 								"663d0b893b1c40185fd994ac"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservacion",
+			"item": [
+				{
+					"name": "Add Booking",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"user\":\"100\",\r\n  \"typeRoom\":\"Grande\",\r\n  \"cleanlinessStatus\":\"Limpia\",\r\n  \"pricePerNight\":\"150\",\r\n  \"hotel\":\"663d0b2a3b1c40185fd994a7\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:3001/HotelManagement/v1/booking/add",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3001",
+							"path": [
+								"HotelManagement",
+								"v1",
+								"booking",
+								"add"
 							]
 						}
 					},

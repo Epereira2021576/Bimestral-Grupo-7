@@ -6,7 +6,7 @@ import {validarJWT} from '../middlewares/validar-jwt.js';
 
 const router = Router();
 
-router.post('/', [
+router.post('/add', [
     validarJWT,
     check('room', 'Room is required').not().isEmpty(),
     check('checkInDate', 'CheckInDate is required').not().isEmpty(),
