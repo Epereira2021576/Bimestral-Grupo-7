@@ -29,11 +29,7 @@ const HotelSchema = new mongoose.Schema( {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-    },
-    status: {
-        type: Boolean,
-        default: true,
-    },
+    }
 } );
 
 export default mongoose.model( 'Hotel', HotelSchema );

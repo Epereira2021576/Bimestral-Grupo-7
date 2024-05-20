@@ -11,6 +11,11 @@ const BookingSchema = new Schema({
         ref: 'Room',
         required: true,
     },
+    hotel: {
+        type: Schema.Types.ObjectId,
+        ref: 'Hotel',
+        required: true,
+    },
     checkInDate: {
         type: Date,
         required: true,
@@ -31,15 +36,7 @@ const BookingSchema = new Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now,
-    },
-    estado: {
-        type: Boolean,
-        default: true
-    },
+    }
 });
 
 export default mongoose.model('Booking', BookingSchema);

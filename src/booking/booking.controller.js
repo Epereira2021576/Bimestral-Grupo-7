@@ -4,7 +4,7 @@ import Room from '../room/room.model.js';
 // Create a new Booking
 export const createBooking = async (req, res) => {
     try {
-        const { _id, estado, ...resto } = req.body;
+        const { _id, ...resto } = req.body;
         const idUser = req.user.uid;
         //console.log(req.user.uid);
         //check role is USER_ROLE
@@ -25,7 +25,6 @@ export const createBooking = async (req, res) => {
         const booking = new Booking({
             ...resto,
             user: idUser,
-            estado
         });
 
         const savedBooking = await booking.save();
@@ -43,23 +42,24 @@ export const createBooking = async (req, res) => {
 //Get bookings by hotel
 export const getAllBookings = async (req, res) => {
     try {
-        const bookings = await Booking.find({ estado: true });
+        const bookings = await Booking.find();
 
-        //check role is HOTEL_ADMIN_ROLE
+        // Check role is HOTEL_ADMIN_ROLE
         if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
             return res.status(401).json({
                 msg: 'Unauthorized',
                 role: req.user.role
             });
         }
-        //check for bookings with true status
-        if (!bookings) {
+
+        // Check for bookings
+        if (!bookings || bookings.length === 0) {
             return res.status(404).json({
                 msg: 'No bookings found'
             });
         }
 
-        //show bookings
+        // Show bookings
         res.status(200).json(bookings);
 
     } catch (error) {
@@ -73,21 +73,24 @@ export const getAllBookings = async (req, res) => {
 export const getAllBookingsByUser = async (req, res) => {
     try {
         const idUser = req.user.uid;
-        const bookings = await Booking.find({ user: idUser, estado: true });
-        //check role is USER_ROLE
+        const bookings = await Booking.find({ user: idUser });
+
+        // Check role is USER_ROLE
         if (req.user.role !== 'USER_ROLE') {
             return res.status(401).json({
                 msg: 'Unauthorized',
                 role: req.user.role
             });
         }
-        //check for bookings with true status
-        if (!bookings) {
+
+        // Check for bookings
+        if (!bookings || bookings.length === 0) {
             return res.status(404).json({
                 msg: 'No bookings found'
             });
         }
-        //show bookings
+
+        // Show bookings
         res.status(200).json(bookings);
     } catch (error) {
         res.status(500).send({
