@@ -1,10 +1,10 @@
 import { response, request } from "express";
 import Room from './room.model.js'
 
+
 export const getRooms = async (req, res) => {
     try {
-        const rooms = await Room.find({ status: true });
-
+        const rooms = await Room.find();
         res.status(200).json(rooms);
     } catch (error) {
         console.error(error);
@@ -15,20 +15,13 @@ export const getRooms = async (req, res) => {
     }
 };
 
+//role hotel admin
 export const postRooms = async (req, res) => {
     try {
-        const { _id, status, ...room } = req.body;
-
-        if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
-            return res.status(401).json({
-                msg: 'Unauthorized',
-                role: req.user.role
-            });
-        }
+        const { _id, ...room } = req.body;
 
         const newRoom = new Room({
             _id,
-            status,
             ...room
         });
 
@@ -48,19 +41,13 @@ export const postRooms = async (req, res) => {
     }
 };
 
+//role hotel admin
 export const putRooms = async (req, res) => {
     try {
         const roomId = req.params.id;
-        const { _id, status, ...rooms } = req.body;
+        const { _id, ...rooms } = req.body;
 
         let room = await Room.findById(roomId);
-
-        if (req.user.role !== 'HOTEL_ADMIN_ROLE') {
-            return res.status(401).json({
-                msg: 'Unauthorized',
-                role: req.user.role
-            });
-        }
 
         if (!room) {
             return res.status(404).json({ msg: 'Habitación no encontrada.' });
@@ -68,10 +55,9 @@ export const putRooms = async (req, res) => {
 
         room.set({
             _id: roomId,
-            status: status,
             ...rooms
         });
-        
+
 
         const updatedRoom = await room.save();
 
