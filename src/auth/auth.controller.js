@@ -15,6 +15,26 @@ export const register = async ( req, res ) => {
             } );
         }
 
+        //if the email includes @hotelmanager.com, assign the HOTEL_ADMIN_ROLE to the user
+        if ( email.includes( '@hotelmanager.com' ) && req.headers['admin'] === 'PLATAFORM_ADMIN_ROLE' ) {
+            const user = await User.create( {
+                name,
+                lastName,
+                username,
+                email,
+                password: encryptedPassword,
+                role: 'HOTEL_ADMIN_ROLE'
+            } );
+            return res.status( 200 ).json( {
+                msg: "user has been added to database",
+                userDetails: {
+                    name: user.name + " " + user.lastName,
+                    username: user.username,
+                    email: user.email,
+                },
+            } );
+        }
+
         const user = await User.create( {
             name,
             lastName,
@@ -88,6 +108,38 @@ export const login = async ( req, res ) => {
         console.log( e );
         res.status( 500 ).json( {
             msg: 'Error when logging in'
+        } );
+    }
+}
+
+export const registerPlataformAdmins = async ( req, res ) => {
+    try {
+        const { name, lastName, username, password } = req.body;
+        const salt = bcrypt.genSaltSync();
+        const encryptedPassword = bcrypt.hashSync( password, salt );
+
+        //Create a user with the email being the combination of the name + lastName in uppercase + @admin.com
+        const user = await User.create( {
+            name,
+            lastName,
+            username,
+            email: ( name + lastName ).toUpperCase() + '@admin.com',
+            password: encryptedPassword,
+            role: 'PLATAFORM_ADMIN_ROLE'
+        } );
+
+        return res.status( 200 ).json( {
+            msg: "user has been added to database",
+            userDetails: {
+                name: user.name + " " + user.lastName,
+                username: user.username,
+                email: user.email,
+            },
+        } );
+    } catch ( e ) {
+        console.log( e );
+        res.status( 500 ).json( {
+            msg: 'Error when registering plataform admins'
         } );
     }
 }
