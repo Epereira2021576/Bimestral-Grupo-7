@@ -1,28 +1,36 @@
 import Event from './event.model.js';
 
 
+//Agregar Evento
 export const postEvent = async ( req, res ) => {
     try {
-        const { eventTitle, eventDescription, eventDate, location, eventServices } = req.body;
-        const newEvent = new Event( {
-            eventTitle, eventDescription, eventDate, location, eventServices
-        } );
+        const { id } = req.params;
+        const { _id, ...resto } = req.body;
+        const event = new Event( {
+            ...resto,
+            hotel: id
 
-        await newEvent.save();
-
-        return res.status( 201 ).json( {
-            msg: 'Event is created successfully',
-            newEvent
         } );
-    } catch ( e ) {
-        console.error( e );
+        await event.save();
+        const hotel = await Hotel.findById( id );
+        if ( hotel ) {
+            hotel.events.push( event._id );
+            await hotel.save();
+        }
+        res.status( 200 ).json( {
+            msg: "Event successfully created",
+            event,
+        } );
+    } catch ( error ) {
+        console.error( error );
         res.status( 500 ).json( {
-            msg: 'Failed to create event.',
-            error: e.message
+            msg: "Error publishing event",
+            error: error.message
         } );
     }
 }
 
+//Listar Eventos
 export const getEvents = async ( req, res ) => {
     try {
         const events = await Event.find();
@@ -38,21 +46,18 @@ export const getEvents = async ( req, res ) => {
     }
 }
 
-export const putEvents = async ( req, res ) => {
+//Editar Evento
+export const putEvent = async ( req, res ) => {
     try {
         const { id } = req.params;
-        const { eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices } = req.body;
-
-
-
+        const { ...resto } = req.body;
         const updatedEvent = await Event.findByIdAndUpdate( id, {
-            eventTitle, eventDescription, eventDate, location, additionalInfo, eventServices
-        }, { new: true } );
-
+            ...resto
+        } )
         res.status( 200 ).json( {
-            msg: 'Event updated successfully',
+            msg: "Event updated successfully",
             updatedEvent
-        } );
+        } )
     } catch ( e ) {
         console.error( e );
         res.status( 500 ).json( {
@@ -61,13 +66,19 @@ export const putEvents = async ( req, res ) => {
         } );
     }
 }
-
+//Eliminar Evento
 export const deleteEvents = async ( req, res ) => {
     try {
         const { id } = req.params;
-        await Event.findByIdAndDelete( id );
+        const deletedEvent = await Event.findByIdAndDelete( id );
+        if ( !deleteEvent ) {
+            return res.status( 404 ).json( {
+                msg: "Event not found"
+            } );
+        }
         res.status( 200 ).json( {
-            msg: 'Event deleted successfully'
+            msg: "Event successfully deleted",
+            deletedEvent
         } );
     } catch ( e ) {
         console.error( e );
