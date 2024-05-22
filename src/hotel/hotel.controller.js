@@ -1,25 +1,17 @@
 import Hotel from './hotel.model.js';
 
+
+//role platform admin
 export const postHotel = async (req, res) => {
     try {
-        const { name, description, address, phone, category, pricePerNight, amenities, owner } = req.body;
-        const newHotel = new Hotel({
-            name, description, address, phone, category, pricePerNight, amenities, owner
+        const { _id, ...resto } = req.body;
+        const hotel = new Hotel({
+            _id, ...resto
         });
-        console.log(req.user.role);
-
-        //check if role is PLATAFORM_ADMIN_ROLE
-        if (req.user.role!== 'PLATAFORM_ADMIN_ROLE') {
-            return res.status(401).json({
-                msg: 'Unauthorized',
-                role: req.user.role
-            });
-        }
-
-        await newHotel.save();
+        await hotel.save();
         return res.status(201).json({
             msg: 'Hotel is created successfully',
-            newHotel
+            hotel
         });
     } catch (error) {
         console.error(error);
@@ -30,65 +22,50 @@ export const postHotel = async (req, res) => {
     }
 };
 
-
-//Get Hotel by status true
 export const getHotel = async (req, res) => {
     try {
-        const hotel = await Hotel.find({ status: true });
-        // check for hotels with true status
-        if (!hotel) {
+        const hotels = await Hotel.find();
+        if (!hotels || hotels.length === 0) {
             return res.status(404).json({
                 msg: 'No hotel found'
             });
         }
-        res.status(200).json(hotel);
+        res.status(200).json(hotels);
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            msg: 'Failed to get hotel.',
+            msg: 'Failed to get hotels.',
             error: error.message
         });
     }
 }
 
-//Update Hotel by id
-export const updateHotel = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const { name, description, address, phone, category, pricePerNight, amenities, owner } = req.body;
-        const hotel = await Hotel.findById(id);
-        
-        console.log(req.user.role);
 
-        //check if role is PLATAFORM_ADMIN_ROLE
-        if (req.user.role!== 'PLATAFORM_ADMIN_ROLE') {
-            return res.status(401).json({
-                msg: 'Unauthorized',
-                role: req.user.role
-            });
-        }
-        // check if hotel exists
+// role plataform admin
+export const putHotel = async (req, res) => {
+    try {
+        const idRoom = req.params.id;
+        const { _id, ...resto } = req.body;
+
+        const hotel = await Hotel.findById(idRoom);
+
         if (!hotel) {
             return res.status(404).json({
                 msg: 'Hotel not found'
             });
         }
-        //check if status is true
-        if (!hotel.status) {
-            return res.status(404).json({
-                msg: 'Hotel is not available'
-            });
-        }
-        // update hotel
-        const updatedHotel = await Hotel.findByIdAndUpdate(id, {
-            name, description, address, phone, category, pricePerNight, amenities, owner
-        }, { new: true });
+
+        hotel.set({
+            _id: idRoom,
+            ...resto
+        });
+        const updatedHotel = await hotel.save();
+
         res.status(200).json({
             msg: 'Hotel updated successfully',
             hotel: updatedHotel
         });
-    }
-    catch (error) {
+    } catch (error) {
         console.error(error);
         res.status(500).json({
             msg: 'Failed to update hotel.',
@@ -98,33 +75,19 @@ export const updateHotel = async (req, res) => {
 }
 
 
-//Delete Hotel by id
+//role platform admin
 export const deleteHotel = async (req, res) => {
     try {
         const { id } = req.params;
-        const hotel = await Hotel.findById(id);
-        //check if role is PLATAFORM_ADMIN_ROLE
-        if (req.user.role !== 'PLATAFORM_ADMIN_ROLE') {
-            return res.status(401).json({
-                msg: 'Unauthorized'
-            });
-        }
-        // check if hotel exists
+        const hotel = await Hotel.findByIdAndDelete(id);
         if (!hotel) {
             return res.status(404).json({
                 msg: 'Hotel not found'
             });
         }
-        //check if status is true
-        if (!hotel.status) {
-            return res.status(404).json({
-                msg: 'Hotel is not available'
-            });
-        }
-        // delete hotel
-        await Hotel.findByIdAndDelete(id);
         res.status(200).json({
-            msg: 'Hotel deleted successfully'
+            msg: 'Hotel deleted successfully',
+            hotel
         });
     } catch (error) {
         console.error(error);
@@ -134,4 +97,3 @@ export const deleteHotel = async (req, res) => {
         });
     }
 }
-
