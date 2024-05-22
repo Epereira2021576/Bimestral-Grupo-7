@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const BookingSchema = new Schema({
+const BookingSchema = new Schema( {
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User',
@@ -9,11 +9,6 @@ const BookingSchema = new Schema({
     room: {
         type: Schema.Types.ObjectId,
         ref: 'Room',
-        required: true,
-    },
-    hotel: {
-        type: Schema.Types.ObjectId,
-        ref: 'Hotel',
         required: true,
     },
     checkInDate: {
@@ -28,15 +23,10 @@ const BookingSchema = new Schema({
         type: Number,
         required: true,
     },
-    status: {
-        type: String,
-        enum: ['pending', 'confirmed', 'cancelled', 'completed'],
-        default: 'pending',
-    },
     createdAt: {
         type: Date,
         default: Date.now,
-    }
-});
+    },
+} );
 
-export default mongoose.model('Booking', BookingSchema);
+export default mongoose.model( 'Booking', BookingSchema );
