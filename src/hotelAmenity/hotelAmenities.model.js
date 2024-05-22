@@ -1,7 +1,7 @@
-import mongoose, { Schema } from "mongoose";
+import mongose, { Schema } from "mongoose";
 
-const HotelAmenitiesSchema = new Schema( {
-    hotelAmenity: {
+const HotelAmenitiesSchema = mongose.Schema( {
+    nameAmenity: {
         type: String,
         required: true
     },
@@ -13,11 +13,6 @@ const HotelAmenitiesSchema = new Schema( {
         type: Number,
         required: true
     },
-    amenityUse: {
-        type: Schema.Types.ObjectId,
-        ref: 'Hotel',
-        required: true
-    },
 } );
 
-export default mongoose.model( 'HotelAmenities', HotelAmenitiesSchema );
+export default mongose.model( 'HotelAmenities', HotelAmenitiesSchema );
