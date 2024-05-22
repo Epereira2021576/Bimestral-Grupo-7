@@ -1,28 +1,27 @@
 import HotelAmenities from "./hotelAmenities.model.js";
 
-
-//Listar Comodidades
+// Obtener todas las comodidades de hotel
 export const getHotelAmenities = async (req, res) => {
     try {
         const amenities = await HotelAmenities.find();
-        //if there are no amenities
+        // Si no hay comodidades
         if (!amenities) {
             return res.status(404).json({
-                msg: 'No amenities found'
+                msg: 'No se encontraron comodidades'
             });
         }
-        //return the amenities
+        // Retornar las comodidades
         res.status(200).json(amenities);
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            msg: 'Failed to get amenities.',
+            msg: 'Error al obtener las comodidades.',
             error: error.message
         });
     }
 }
 
-//Agregar Comodidad
+// Agregar una nueva comodidad de hotel
 export const postHotelAmenitie = async (req, res) => {
     try {
         const { _id, ...resto } = req.body;
@@ -31,19 +30,19 @@ export const postHotelAmenitie = async (req, res) => {
         });
         await hotelAmenity.save();
         res.status(200).json({
-            msg: "Hotel amenity added successfully",
+            msg: "Comodidad de hotel agregada exitosamente",
             hotelAmenity
         });
     } catch (e) {
         console.error(e);
         res.status(500).json({
-            msg: "Error adding hotel amenity",
+            msg: "Error al agregar la comodidad de hotel",
             error: e.message
         });
     }
 }
 
-//Editar Comodidad
+// Actualizar una comodidad de hotel existente
 export const putHotelAmenities = async (req, res) => {
     const { id } = req.params;
     const { _id, ...resto } = req.body;
@@ -55,42 +54,41 @@ export const putHotelAmenities = async (req, res) => {
         );
         if (!updatedAmenity) {
             return res.status(404).json({
-                msg: "HotelAmenity not found"
+                msg: "Comodidad de hotel no encontrada"
             });
         }
         res.status(200).json({
-            msg: "HotelAmenity updated successfully",
+            msg: "Comodidad de hotel actualizada exitosamente",
             updatedAmenity
         });
     } catch (e) {
         console.error(e);
         res.status(500).json({
-            msg: "Error updating HotelAmenity",
+            msg: "Error al actualizar la comodidad de hotel",
             error: e.message
         });
     }
 }
 
-//Eliminar Comodidad
+// Eliminar una comodidad de hotel
 export const deleteHotelAmenities = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedAmenity = await HotelAmenities.findByIdAndDelete(id);
         if (!deletedAmenity) {
             return res.status(404).json({
-                msg: "HotelAmenity not found"
+                msg: "Comodidad de hotel no encontrada"
             });
         }
         res.status(200).json({
-            msg: "HotelAmenity successfully deleted",
+            msg: "Comodidad de hotel eliminada exitosamente",
             deletedAmenity
         });
     } catch (e) {
         console.error(e);
         res.status(500).json({
-            msg: 'Failed to delete HotelAmenity.',
+            msg: 'Error al eliminar la comodidad de hotel.',
             error: e.message
         });
     }
 }
-

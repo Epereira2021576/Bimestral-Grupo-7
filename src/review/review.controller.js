@@ -1,98 +1,112 @@
 import Review from "./review.model.js";
 
-//role user
+// Agregar una nueva reseña
 export const postReview = async (req, res) => {
     try {
+        // Extraer el ID y el resto de los datos de la solicitud
         const { _id, ...resto } = req.body;
+        
+        // Crear una nueva instancia de Review con los datos de la solicitud
         const review = new Review({
             ...resto
         });
-        //save data
+        
+        // Guardar la nueva reseña en la base de datos
         await review.save();
+        
+        // Responder con un mensaje de éxito y la reseña creada
         res.status(200).json({
-            msg: "Review added successfully",
+            msg: "Reseña agregada exitosamente",
             review
         });
     } catch (e) {
+        // Manejar cualquier error que pueda ocurrir y responder con un mensaje de error
         console.error(e);
         res.status(500).json({
-            msg: "Error adding review",
+            msg: "Error al agregar la reseña",
             error: e.message
         });
     }
 }
 
-//role user
+// Actualizar una reseña existente
 export const putReview = async (req, res) => {
     const { id } = req.params;
     const { _id, ...resto } = req.body;
     try {
-
+        // Buscar y actualizar la reseña con el ID proporcionado
         const updatedReview = await Review.findByIdAndUpdate(
             id,
             { ...resto },
-            { new: true }
+            { new: true } // Devolver la versión actualizada de la reseña
         );
 
-        //if the review is not found
+        // Verificar si la reseña fue encontrada y actualizada correctamente
         if (!updatedReview) {
             return res.status(404).json({
-                msg: "Review not found"
+                msg: "Reseña no encontrada"
             });
         }
-        //return the updated review
+
+        // Responder con un mensaje de éxito y la reseña actualizada
         res.status(200).json({
-            msg: "Review updated successfully",
+            msg: "Reseña actualizada exitosamente",
             updatedReview
         });
     } catch (e) {
+        // Manejar cualquier error que pueda ocurrir y responder con un mensaje de error
         console.error(e);
         res.status(500).json({
-            msg: "Error updating Review",
+            msg: "Error al actualizar la reseña",
             error: e.message
         });
     }
 }
 
-//role user
-
+// Eliminar una reseña
 export const deleteReview = async (req, res) => {
     try {
         const { id } = req.params;
+        // Buscar y eliminar la reseña con el ID proporcionado
         const deletedReview = await Review.findByIdAndDelete(id);
-        // if the review is not found
+
+        // Verificar si la reseña fue encontrada y eliminada correctamente
         if (!deletedReview) {
             return res.status(404).json({
-                msg: "Review not found"
+                msg: "Reseña no encontrada"
             });
         }
 
-        //return the deleted review
+        // Responder con un mensaje de éxito y la reseña eliminada
         res.status(200).json({
-            msg: "Review successfully deleted",
+            msg: "Reseña eliminada exitosamente",
             deletedReview
         });
     } catch (e) {
+        // Manejar cualquier error que pueda ocurrir y responder con un mensaje de error
         console.error(e);
         res.status(500).json({
-            msg: "Error deleting Review",
+            msg: "Error al eliminar la reseña",
             error: e.message
         });
     }
 }
 
-//role user
+// Obtener todas las reseñas
 export const getReview = async (req, res) => {
     try {
-        // get all reviews
+        // Buscar y obtener todas las reseñas de la base de datos
         const reviews = await Review.find();
+        
+        // Responder con todas las reseñas encontradas
         res.status(200).json({
             reviews
         });
     } catch (e) {
+        // Manejar cualquier error que pueda ocurrir y responder con un mensaje de error
         console.error(e);
         res.status(500).json({
-            msg: "Error getting reviews",
+            msg: "Error al obtener las reseñas",
             error: e.message
         });
     }
