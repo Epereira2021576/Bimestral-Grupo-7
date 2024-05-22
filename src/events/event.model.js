@@ -6,25 +6,40 @@ const EventSchema = new mongoose.Schema( {
         type: String,
         required: true
     },
+    eventDate: {
+        type: Date,
+        required: [true],
+    },
     eventDescription: {
         type: String,
         required: true
     },
-    eventDate: {
+    checkIn: {
         type: Date,
-        required: true
+        required: [true],
     },
-    location: [{
+    checkOut: {
+        type: Date,
+        required: [true],
+    },
+    price: {
+        type: Number,
+        required: [true],
+    },
+    hotel: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Hotel',
-        /*required: true*/
+
     }],
-    additionalInfo: [{
-        type: String,
-    }],
-    eventServices: [{
-        type: String,
-    }],
+
+    amenities: {
+        type: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: "HotelAmenities"
+            }
+        ]
+    }
 
 } );
 
