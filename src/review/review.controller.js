@@ -7,6 +7,7 @@ export const postReview = async (req, res) => {
         const review = new Review({
             ...resto
         });
+        //save data
         await review.save();
         res.status(200).json({
             msg: "Review added successfully",
@@ -26,16 +27,20 @@ export const putReview = async (req, res) => {
     const { id } = req.params;
     const { _id, ...resto } = req.body;
     try {
+
         const updatedReview = await Review.findByIdAndUpdate(
             id,
             { ...resto },
             { new: true }
         );
+
+        //if the review is not found
         if (!updatedReview) {
             return res.status(404).json({
                 msg: "Review not found"
             });
         }
+        //return the updated review
         res.status(200).json({
             msg: "Review updated successfully",
             updatedReview
@@ -55,11 +60,14 @@ export const deleteReview = async (req, res) => {
     try {
         const { id } = req.params;
         const deletedReview = await Review.findByIdAndDelete(id);
+        // if the review is not found
         if (!deletedReview) {
             return res.status(404).json({
                 msg: "Review not found"
             });
         }
+
+        //return the deleted review
         res.status(200).json({
             msg: "Review successfully deleted",
             deletedReview
@@ -76,6 +84,7 @@ export const deleteReview = async (req, res) => {
 //role user
 export const getReview = async (req, res) => {
     try {
+        // get all reviews
         const reviews = await Review.find();
         res.status(200).json({
             reviews

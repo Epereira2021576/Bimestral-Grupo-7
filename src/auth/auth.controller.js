@@ -2,6 +2,8 @@ import User from '../user/user.model.js';
 import bcrypt from 'bcryptjs';
 import { generarJWT } from '../helpers/generar-jwt.js';
 
+
+// Register a new user
 export const register = async ( req, res ) => {
     try {
         const { name, lastName, username, password, email } = req.body;
@@ -9,6 +11,7 @@ export const register = async ( req, res ) => {
         const encryptedPassword = bcrypt.hashSync( password, salt );
         const encryptedAdminPass = bcrypt.hashSync( 'admin657', salt );
 
+        // check if the user is trying to register with the Admin data
         if ( req.body.name == 'Admin' || req.body.lastName == 'Admin' || req.body.username == 'admin' || req.body.email == 'admin@admin.com' ) {
             return res.status( 400 ).json( {
                 msg: 'You cannot register with this data'
@@ -25,6 +28,7 @@ export const register = async ( req, res ) => {
                 password: encryptedPassword,
                 role: 'HOTEL_ADMIN_ROLE'
             } );
+            //return the userDetails
             return res.status( 200 ).json( {
                 msg: "user has been added to database",
                 userDetails: {
@@ -34,7 +38,6 @@ export const register = async ( req, res ) => {
                 },
             } );
         }
-
         const user = await User.create( {
             name,
             lastName,
@@ -54,7 +57,7 @@ export const register = async ( req, res ) => {
                 role: 'PLATAFORM_ADMIN_ROLE'
             } );
         }
-
+        //return the userDetails
         return res.status( 200 ).json( {
             msg: "user has been added to database",
             userDetails: {
@@ -72,12 +75,14 @@ export const register = async ( req, res ) => {
 
 }
 
+//login a user
 export const login = async ( req, res ) => {
     const { email, password } = req.body;
     try {
         const userFound = await User.findOne( { email: email } );
         const validPass = bcrypt.compareSync( password, userFound.password );
 
+        //if the user is found and the password is valid, generate a JWT
         if ( userFound && validPass ) {
             const token = await generarJWT( userFound.id, userFound.name, userFound.role );
 

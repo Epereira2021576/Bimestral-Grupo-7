@@ -5,11 +5,13 @@ import HotelAmenities from "./hotelAmenities.model.js";
 export const getHotelAmenities = async (req, res) => {
     try {
         const amenities = await HotelAmenities.find();
+        //if there are no amenities
         if (!amenities) {
             return res.status(404).json({
                 msg: 'No amenities found'
             });
         }
+        //return the amenities
         res.status(200).json(amenities);
     } catch (error) {
         console.error(error);

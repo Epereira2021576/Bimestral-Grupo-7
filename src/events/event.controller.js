@@ -11,12 +11,14 @@ export const postEvent = async ( req, res ) => {
             hotel: id
 
         } );
+        //save data
         await event.save();
         const hotel = await Hotel.findById( id );
         if ( hotel ) {
             hotel.events.push( event._id );
             await hotel.save();
         }
+        //return the event
         res.status( 200 ).json( {
             msg: "Event successfully created",
             event,
@@ -54,6 +56,7 @@ export const putEvent = async ( req, res ) => {
         const updatedEvent = await Event.findByIdAndUpdate( id, {
             ...resto
         } )
+        //return the updated event
         res.status( 200 ).json( {
             msg: "Event updated successfully",
             updatedEvent
@@ -71,11 +74,13 @@ export const deleteEvents = async ( req, res ) => {
     try {
         const { id } = req.params;
         const deletedEvent = await Event.findByIdAndDelete( id );
+        // if the event is not found
         if ( !deletedEvent ) {
             return res.status( 404 ).json( {
                 msg: "Event not found"
             } );
         }
+        //return the deleted event
         res.status( 200 ).json( {
             msg: "Event successfully deleted",
             deletedEvent

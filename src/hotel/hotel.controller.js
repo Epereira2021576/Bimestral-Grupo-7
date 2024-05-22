@@ -8,7 +8,9 @@ export const postHotel = async (req, res) => {
         const hotel = new Hotel({
             _id, ...resto
         });
+        //save data
         await hotel.save();
+        //return the hotel
         return res.status(201).json({
             msg: 'Hotel is created successfully',
             hotel
@@ -26,11 +28,13 @@ export const postHotel = async (req, res) => {
 export const getHotel = async (req, res) => {
     try {
         const hotels = await Hotel.find();
+        //if there are no hotels
         if (!hotels || hotels.length === 0) {
             return res.status(404).json({
                 msg: 'No hotel found'
             });
         }
+        //return the hotels
         res.status(200).json(hotels);
     } catch (error) {
         console.error(error);
@@ -49,19 +53,19 @@ export const putHotel = async (req, res) => {
         const { _id, ...resto } = req.body;
 
         const hotel = await Hotel.findById(idRoom);
-
+        //if the hotel is not found
         if (!hotel) {
             return res.status(404).json({
                 msg: 'Hotel not found'
             });
         }
-
+        // update the hotel
         hotel.set({
             _id: idRoom,
             ...resto
         });
         const updatedHotel = await hotel.save();
-
+        //return the updated hotel
         res.status(200).json({
             msg: 'Hotel updated successfully',
             hotel: updatedHotel
@@ -81,11 +85,14 @@ export const deleteHotel = async (req, res) => {
     try {
         const { id } = req.params;
         const hotel = await Hotel.findByIdAndDelete(id);
+
+        //if the hotel is not found
         if (!hotel) {
             return res.status(404).json({
                 msg: 'Hotel not found'
             });
         }
+        //return the deleted hotel
         res.status(200).json({
             msg: 'Hotel deleted successfully',
             hotel

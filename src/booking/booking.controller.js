@@ -86,6 +86,7 @@ export const createBooking = async (req, res) => {
 export const getAllBookings = async (req, res) => {
     try {
         const bookings = await Booking.find();
+        // if there are no bookings
         if (!bookings) {
             return res.status(404).json({
                 msg: 'No bookings found'
