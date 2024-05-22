@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const RoomSchema = new Schema({
+const RoomSchema = new Schema( {
     roomNumber: {
         type: Number,
         required: true
@@ -21,12 +21,14 @@ const RoomSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Hotel'
     },
-    status: {
-        type: Boolean,
-        default: true
-    },
-});
+    available: {
+        type: String,
+        required: true,
+        enum: ["AVAILABLE", "UNAVAILABLE"],
+        default: "AVAILABLE"
+    }
+} );
 
 
 
-export default mongoose.model('Room', RoomSchema);
+export default mongoose.model( 'Room', RoomSchema );
