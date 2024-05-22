@@ -3,11 +3,13 @@ import { check } from 'express-validator';
 import { validarCampos } from '../middlewares/validar-campos.js';
 import { postHotel, getHotel, putHotel, deleteHotel } from './hotel.controller.js';
 import { validarJWT } from '../middlewares/validar-jwt.js';
+import { hasPlataformAdmin } from '../helpers/role-verifiers.js'
 
 const router = Router();
 
 router.post('/add', [
     validarJWT,
+    hasPlataformAdmin,
     check('name', 'Name is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
     check('address', 'Address is required').not().isEmpty(),
@@ -19,11 +21,11 @@ router.post('/add', [
 ], postHotel);
 
 router.get('/', [
-    validarJWT
 ], getHotel);
 
-router.put('/:id', [
+router.put('/edit/:id', [
     validarJWT,
+    hasPlataformAdmin,
     check('name', 'Name is required').not().isEmpty(),
     check('description', 'Description is required').not().isEmpty(),
     check('address', 'Address is required').not().isEmpty(),
@@ -34,8 +36,9 @@ router.put('/:id', [
     validarCampos
 ], putHotel);
 
-router.delete('/:id', [
-    validarJWT
-],deleteHotel);
+router.delete('/delete/:id', [
+    validarJWT,
+    hasPlataformAdmin
+], deleteHotel);
 
 export default router;
