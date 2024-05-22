@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { check } from "express-validator";
-import { postEvent, getEvents, putEvent, deleteEvent } from "./event.controller.js";
+import { postEvent, getEvents, putEvent, deleteEvents } from "./event.controller.js";
 import { validarJWT } from "../middlewares/validar-jwt.js";
 import { validarCampos } from "../middlewares/validar-campos.js"
 import { hasHotelAdmin } from '../helpers/role-verifiers.js'
@@ -48,7 +48,7 @@ router.delete(
         validarJWT,
         hasHotelAdmin,
         validarCampos,
-    ], deleteEvent
+    ], deleteEvents
 );
 
 export default router;
