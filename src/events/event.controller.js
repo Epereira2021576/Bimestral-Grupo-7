@@ -71,7 +71,7 @@ export const deleteEvents = async ( req, res ) => {
     try {
         const { id } = req.params;
         const deletedEvent = await Event.findByIdAndDelete( id );
-        if ( !deleteEvent ) {
+        if ( !deletedEvent ) {
             return res.status( 404 ).json( {
                 msg: "Event not found"
             } );

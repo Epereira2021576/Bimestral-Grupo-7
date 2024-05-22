@@ -27,11 +27,7 @@ const UserSchema = new Schema( {
         type: String,
         enum: ['USER_ROLE', 'PLATAFORM_ADMIN_ROLE', 'HOTEL_ADMIN_ROLE'],
         default: 'USER_ROLE'
-    },
-    bookings: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Booking'
-    }]
+    }
 } );
 
 UserSchema.methods.toJSON = function () {
