@@ -1,107 +1,105 @@
 import Hotel from './hotel.model.js';
 
-
-//role platform admin
+// Crear un nuevo hotel
 export const postHotel = async (req, res) => {
     try {
         const { _id, ...resto } = req.body;
         const hotel = new Hotel({
             _id, ...resto
         });
-        //save data
+        // Guardar los datos
         await hotel.save();
-        //return the hotel
+        // Retornar el hotel
         return res.status(201).json({
-            msg: 'Hotel is created successfully',
+            msg: 'Hotel creado exitosamente',
             hotel
         });
 
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            msg: 'Failed to create hotel.',
+            msg: 'Error al crear el hotel.',
             error: error.message
         });
     }
 };
 
+// Obtener todos los hoteles
 export const getHotel = async (req, res) => {
     try {
         const hotels = await Hotel.find();
-        //if there are no hotels
+        // Si no hay hoteles
         if (!hotels || hotels.length === 0) {
             return res.status(404).json({
-                msg: 'No hotel found'
+                msg: 'No se encontraron hoteles'
             });
         }
-        //return the hotels
+        // Retornar los hoteles
         res.status(200).json(hotels);
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            msg: 'Failed to get hotels.',
+            msg: 'Error al obtener los hoteles.',
             error: error.message
         });
     }
 }
 
-
-// role plataform admin
+// Actualizar un hotel existente
 export const putHotel = async (req, res) => {
     try {
         const idRoom = req.params.id;
         const { _id, ...resto } = req.body;
 
         const hotel = await Hotel.findById(idRoom);
-        //if the hotel is not found
+        // Si el hotel no se encuentra
         if (!hotel) {
             return res.status(404).json({
-                msg: 'Hotel not found'
+                msg: 'Hotel no encontrado'
             });
         }
-        // update the hotel
+        // Actualizar el hotel
         hotel.set({
             _id: idRoom,
             ...resto
         });
         const updatedHotel = await hotel.save();
-        //return the updated hotel
+        // Retornar el hotel actualizado
         res.status(200).json({
-            msg: 'Hotel updated successfully',
+            msg: 'Hotel actualizado exitosamente',
             hotel: updatedHotel
         });
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            msg: 'Failed to update hotel.',
+            msg: 'Error al actualizar el hotel.',
             error: error.message
         });
     }
 }
 
-
-//role platform admin
+// Eliminar un hotel
 export const deleteHotel = async (req, res) => {
     try {
         const { id } = req.params;
         const hotel = await Hotel.findByIdAndDelete(id);
 
-        //if the hotel is not found
+        // Si el hotel no se encuentra
         if (!hotel) {
             return res.status(404).json({
-                msg: 'Hotel not found'
+                msg: 'Hotel no encontrado'
             });
         }
-        //return the deleted hotel
+        // Retornar el hotel eliminado
         res.status(200).json({
-            msg: 'Hotel deleted successfully',
+            msg: 'Hotel eliminado exitosamente',
             hotel
         });
 
     } catch (error) {
         console.error(error);
         res.status(500).json({
-            msg: 'Failed to delete hotel.',
+            msg: 'Error al eliminar el hotel.',
             error: error.message
         });
     }
